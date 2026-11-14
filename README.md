@@ -9,8 +9,8 @@ Google Speech Commands dataset, written in PyTorch and trained on an AMD GPU (RO
 - **Training:** AdamW, cosine learning-rate schedule, best-validation checkpoint
 - **Test accuracy:** about 94%
 
-![Training curves](outputs/curves.png)
-![Confusion matrix](outputs/confusion_matrix.png)
+![Training curves](results/curves.png)
+![Confusion matrix](results/confusion_matrix.png)
 
 ## Run
 
