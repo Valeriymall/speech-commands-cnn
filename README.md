@@ -4,7 +4,7 @@ and trained on an AMD GPU (9070xt) (ROCm, WSL).
 - **Model:** three blocks of (conv, batch norm, ReLU) x2 + max pool, then a small MLP head with dropout
 - **Training:** Adam, cosine learning-rate schedule, bf16 mixed precision
 - **Augmentation:** random horizontal flip and random crop (train only), per-channel normalization
-- **Test accuracy:** XX%
+- **Test accuracy:** 94%
 
 ![Training curves](results/curves.png)
 
