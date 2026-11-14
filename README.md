@@ -1,20 +1,22 @@
-A VGG-style convolutional network for CIFAR-10 image classification, written in PyTorch
-and trained on an AMD GPU (9070xt) (ROCm, WSL).
+Speech Commands CNN
 
-- **Model:** three blocks of (conv, batch norm, ReLU) x2 + max pool, then a small MLP head with dropout
-- **Training:** Adam, cosine learning-rate schedule, bf16 mixed precision
-- **Augmentation:** random horizontal flip and random crop (train only), per-channel normalization
-- **Test accuracy:** 94%
+Classifies ten spoken commands (yes, no, up, down, left, right, on, off, stop, go) from the
+Google Speech Commands dataset, written in PyTorch and trained on an AMD GPU (ROCm, WSL).
 
-![Training curves](results/curves.png)
+- **Features:** one-second clips converted to a log-mel spectrogram (64 mel bins, 101 frames),
+  standardized per clip
+- **Model:** three conv blocks (conv, batch norm, ReLU, max pool) and a small pooled head
+- **Training:** AdamW, cosine learning-rate schedule, best-validation checkpoint
+- **Test accuracy:** about 94%
 
-`results/` also holds example predictions and the confusion matrix.
+![Training curves](outputs/curves.png)
+![Confusion matrix](outputs/confusion_matrix.png)
 
 ## Run
 
-Install PyTorch and torchvision for your platform (ROCm 7.2 wheels were used here), plus
+Install PyTorch and torchaudio for your platform (ROCm 7.2 wheels were used here), plus
 `numpy`, `matplotlib` and `scikit-learn`, then run from this folder:
 
-    python train.py
+    python voiceRecogn.py
 
-CIFAR-10 downloads into `./data` on the first run.
+The dataset (about 2 GB) downloads into `./data` on the first run. Plots are saved to `./outputs`.
